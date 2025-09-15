@@ -1,0 +1,6 @@
+.rating {
+  background-color: brown;
+}
+.MuiRating-visuallyHidden {
+  color: blue !important;
+}

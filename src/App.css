@@ -7,8 +7,8 @@ body {
   color: white;
 }
 a {
-  text-decoration: none;
+  text-decoration: none !important;
 }
-span {
+/* span {
   color: white;
-}
+} */
