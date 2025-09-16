@@ -26,7 +26,7 @@ const Product = () => {
   }, []);
 
   return (
-    <div>
+    <div className={classes.product_container}>
       {product?.map((item) => (
         <ProductCard singleproduct={item} key={item.id} />
       ))}
