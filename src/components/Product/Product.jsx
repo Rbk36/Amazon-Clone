@@ -4,21 +4,14 @@ import { useEffect } from "react";
 import axios from "axios";
 import ProductCard from "./ProductCard";
 const Product = () => {
-  const [product, setProduct] = useState([]);
-
-  //   const fetchData = async () => {
-  //   useEffect(() => {
-  //     axios
-  //       .get("https://fakestoreapi.com/products")
-  //       .then((res) => console.log(res), setProduct(res.data));
-  //   }, []);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     (async () => {
       try {
         const res = await axios.get("https://fakestoreapi.com/products");
         console.log(res);
-        setProduct(res.data);
+        setProducts(res.data);
       } catch (error) {
         console.log("error", error);
       }
@@ -27,7 +20,7 @@ const Product = () => {
 
   return (
     <div className={classes.product_container}>
-      {product?.map((item) => (
+      {products?.map((item) => (
         <ProductCard singleproduct={item} key={item.id} />
       ))}
     </div>

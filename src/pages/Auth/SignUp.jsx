@@ -1,7 +1,8 @@
+import LayOut from "../../components/LayOut/LayOut";
 import classes from "./SignUp.module.css";
 
 const SignUp = () => {
-  return <div>SignUp</div>;
+  return <LayOut>SignUp</LayOut>;
 };
 
 export default SignUp;

@@ -1,79 +1,6 @@
-// import { FaSearch } from "react-icons/fa";
-// import { FaShoppingCart } from "react-icons/fa";
-// import { FaLocationDot } from "react-icons/fa6";
-// import classes from "./Header.module.css";
-// const Header = () => {
-//   return (
-//     <div>
-//       <section>
-//         {" "}
-//         <section>
-//           <div className={classes.header_container}>
-//             <div className={classes.logo_container}>
-//               <a href="/">
-//                 <img
-//                   src="https://pngimg.com/uploads/amazon/amazon_PNG11.png"
-//                   width="100px"
-//                   alt=""
-//                 />
-//               </a>
-//               {/* delivery */}
-//               <div className={classes.delivery}>
-//                 {" "}
-//                 <span>
-//                   <FaLocationDot />
-//                 </span>
-//                 <p>Delivered to</p>
-//                 <span>Ethiopia</span>
-//               </div>
-//             </div>
-//             <div className={classes.search}>
-//               <FaSearch />
-//               <select name="" id="">
-//                 <option value="">ALL</option>
-//               </select>
-//               <input type="text" name="" id="" placeholder="search product" />
-//               {/* icon */}
-//             </div>
-//           </div>
-//           <div>
-//             <div>
-//               <img
-//                 src="https://static.vecteezy.com/system/resources/previews/000/532/212/original/vector-united-states-of-america-flag-usa-flag-america-flag-background.jpg"
-//                 width="600px"
-//                 alt=""
-//               />
-//               <section>
-//                 <option value="">EN</option>
-//               </section>{" "}
-//             </div>
-//             {/* 3 components */}
-//             <a href="">
-//               <div>
-//                 <p>Sign In</p>
-//                 <span>Account&lists</span>
-//               </div>
-//             </a>
-//             {/* orders */}
-//             <a href="">
-//               <p>returns</p>
-//               <span>&orders</span>
-//             </a>
-//             <FaShoppingCart />
-//             <a href="">
-//               {/* icon */}
-//               <span>0</span>
-//             </a>
-//           </div>
-//         </section>
-//       </section>
-//     </div>
-//   );
-// };
-
-// export default Header;
 import { FaLocationDot } from "react-icons/fa6";
 import classes from "./Header.module.css";
+import { Link } from "react-router";
 import { FaSearch } from "react-icons/fa";
 import { BiCart } from "react-icons/bi";
 import LowerContainer from "./LowerContainer";
@@ -83,15 +10,15 @@ const Header = () => {
       <section>
         <div className={classes.header_container}>
           <div className={classes.logo_container}>
-            <a href="/">
+            <Link to="/">
               <img
                 src="https://pngimg.com/uploads/amazon/amazon_PNG11.png"
                 width="100px"
                 alt=""
               />
-            </a>
+            </Link>
             <span>
-              <FaLocationDot />{" "}
+              <FaLocationDot className={classes.location_icon} />
             </span>
           </div>
           <div className={classes.delivery}>
@@ -103,14 +30,14 @@ const Header = () => {
             <select name="" id="">
               <option value=""> ALL</option>
             </select>
-            <input type="text" />{" "}
-            <span>
+            <input type="text" />
+            <span className={classes.search_icon}>
               <FaSearch />
             </span>
           </div>
 
           <div className={classes.flag}>
-            <a href="" className={classes.language}>
+            <Link to="" className={classes.language}>
               <img
                 src="https://static.vecteezy.com/system/resources/previews/000/532/212/original/vector-united-states-of-america-flag-usa-flag-america-flag-background.jpg"
                 width="50px"
@@ -118,26 +45,24 @@ const Header = () => {
               />
               <select>
                 <option value="">EN</option>
-              </select>{" "}
-            </a>
+              </select>
+            </Link>
 
-            <a href="" className={classes.signin}>
-              {" "}
+            <Link to="/auth" className={classes.signin}>
               <p>Sign In</p>
               <span>Account & Lists</span>
-            </a>
+            </Link>
 
-            <a href="" className={classes.orders}>
+            <Link to="/orders" className={classes.orders}>
               <p>returns</p>
               <span>&Orders</span>
-            </a>
+            </Link>
           </div>
-          <div className={classes.cart}>
+          <Link to="/cart" className={classes.cart}>
             <BiCart size={35} />
-            <a href="">
-              <span>0</span>
-            </a>
-          </div>
+
+            <span>0</span>
+          </Link>
         </div>
       </section>
       <LowerContainer />

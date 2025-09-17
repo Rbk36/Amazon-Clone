@@ -1,7 +1,8 @@
+import LayOut from "../../components/LayOut/LayOut";
 import classes from "./orders.module.css";
 
 const Orders = () => {
-  return <div>Orders</div>;
+  return <LayOut>Orders</LayOut>;
 };
 
 export default Orders;

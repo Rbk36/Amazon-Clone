@@ -4,10 +4,9 @@ import classes from "./category.module.css";
 const Category = () => {
   return (
     <section className={classes.categoryContainer}>
-      {categoryInfo?.map((info) => {
-        const { imgLink, title, id } = info;
-        return <CategoryCard imgLink={imgLink} title={title} key={id} />;
-      })}
+      {categoryInfo?.map((info) => (
+        <CategoryCard data={info} key={info.id} />
+      ))}
     </section>
   );
 };

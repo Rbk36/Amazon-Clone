@@ -1,7 +1,8 @@
+import LayOut from "../../components/LayOut/LayOut";
 import classes from "./cart.module.css";
 
 const Cart = () => {
-  return <div>Cart</div>;
+  return <LayOut>Cart</LayOut>;
 };
 
 export default Cart;
