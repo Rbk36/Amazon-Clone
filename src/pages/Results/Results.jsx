@@ -8,6 +8,8 @@ import ProductCard from "../../components/Product/ProductCard";
 const Results = () => {
   const { categoryName } = useParams();
   const [results, setResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const myUrl = "https://fakestoreapi.com";
 
   useEffect(() => {
     (async () => {
@@ -17,8 +19,11 @@ const Results = () => {
         );
         setResults(res.data);
         console.log(res.data);
+        setIsLoading(false);
       } catch (error) {
         console.log("error", error);
+                setIsLoading(false);
+
       }
     })();
   }, [categoryName]);
@@ -30,11 +35,13 @@ const Results = () => {
           Category/{categoryName}
         </p>
         <hr />
-        <div className={classes.product_container}>
+{isLoading ? (
+        <Loader />
+      ) : (        <div className={classes.product_container}>
           {results?.map((product) => (
             <ProductCard key={product.id} singleproduct={product} />
           ))}
-        </div>
+        </div>)}
       </LayOut>
     );
   }

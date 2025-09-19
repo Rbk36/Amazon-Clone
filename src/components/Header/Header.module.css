@@ -240,12 +240,21 @@ svg {
 }
 
 /* === LOWER CONTAINER === */
+.lower_container{
+     background-color: rgb(10, 34, 33);
+     padding:13px
+}
 .lower_container ul,
 .lower_container p {
   display: flex;
   align-items: center;
   gap: 20px;
   list-style: none;
+ 
+}
+.lower_container li{
+  font-size: 20px;
+color: #f3f3f3;
 }
 
 /* === RESPONSIVE DESIGN === */

@@ -1,8 +1,10 @@
+
 import CurrencyFormat from "../CurrencyFormat/CurrencyFormat";
 import classes from "./Product.module.css";
 import Rating from "@mui/material/Rating";
 import { Link } from "react-router";
 const ProductCard = ({ singleproduct }) => {
+  const {image,title,rating,id,price}=singleproduct
   return (
     <div className={classes.card_container}>
       <Link to={`/products/${id}`}>
@@ -24,7 +26,7 @@ const ProductCard = ({ singleproduct }) => {
         </div>
         <div>
           {/* price */}
-          <CurrencyFormat amount={singleproduct?.price} />
+          <CurrencyFormat amount={price} />
         </div>
         <button className={classes.button}>add to cart</button>
       </div>
