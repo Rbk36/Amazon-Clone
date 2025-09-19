@@ -1,32 +1,57 @@
+import React, { useContext } from "react";
 import CurrencyFormat from "../CurrencyFormat/CurrencyFormat";
 import classes from "./Product.module.css";
 import Rating from "@mui/material/Rating";
 import { Link } from "react-router";
-const ProductCard = ({ singleproduct }) => {
+import { DataContext } from "../DataProvider/DataProvider";
+import { Type } from "../../utils/action.type";
+const ProductCard = ({ singleproduct, flex, renderDesc, renderAdd }) => {
+  const { image, title, rating, price, id, description } = singleproduct;
+  const [state, dispatch] = useContext(DataContext);
+  // console.log(state);
+
+  const addToCart = () => {
+    dispatch({ type: Type.ADD_TO_BASKET, payload: singleproduct });
+  };
   return (
-    <div className={classes.card_container}>
+    <div
+      className={`${classes.card_container} ${
+        flex ? classes.product_flexed : ""
+      }`}
+    >
       <Link to={`/products/${id}`}>
-        <img src={singleproduct?.image} alt="images" />
+        <img src={image} alt="images" />
       </Link>
       <div>
         <h3 className={classes.title}>{title}</h3>
-
+        {renderDesc && (
+          <div>
+            <p style={{ padding: "10px 0", maxWidth: "750px" }}>
+              {description}
+            </p>
+          </div>
+        )}
         <div className={classes.rating}>
-          {/* 
+          {/*
         rating
         */}
-          <Rating value={rating?.rate} precision={0.1} />
+          <Rating defaultValue={rating?.rate} precision={0.1} />
 
-          {/* 
+          {/*
     counter
     */}
           <small>{rating?.count}</small>
         </div>
         <div>
           {/* price */}
-          <CurrencyFormat amount={singleproduct?.price} />
+          <CurrencyFormat amount={price} />
         </div>
-        <button className={classes.button}>add to cart</button>
+        {renderAdd && (
+          <button className={classes.button} onClick={addToCart}>
+            {" "}
+            add to cart
+          </button>
+        )}
       </div>
     </div>
   );

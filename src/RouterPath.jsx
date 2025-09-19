@@ -6,6 +6,8 @@ import Orders from "./pages/Orders/Orders";
 import Cart from "./pages/Cart/Cart";
 import Results from "./pages/Results/Results";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
+// import Test from "./pages/ProductDetail/Test";
+
 const RouterPath = () => {
   return (
     <>

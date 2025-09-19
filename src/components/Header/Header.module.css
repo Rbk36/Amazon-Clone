@@ -164,6 +164,11 @@ svg {
   padding: 5px;
   background-color: #f3f3f3;
 }
+.fixed {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
 
 /* === ICON COLOR === */
 svg {

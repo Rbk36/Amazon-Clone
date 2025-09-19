@@ -4,10 +4,15 @@ import { Link } from "react-router";
 import { FaSearch } from "react-icons/fa";
 import { BiCart } from "react-icons/bi";
 import LowerContainer from "./LowerContainer";
+import { useContext } from "react";
+import { DataContext } from "../DataProvider/DataProvider";
 const Header = () => {
+  const [{ basket }, dispatch] = useContext(DataContext);
+  console.log(basket);
+
   return (
     <>
-      <section>
+      <section className={classes.fixed}>
         <div className={classes.header_container}>
           <div className={classes.logo_container}>
             <Link to="/">
@@ -61,7 +66,7 @@ const Header = () => {
           <Link to="/cart" className={classes.cart}>
             <BiCart size={35} />
 
-            <span>0</span>
+            <span>{basket.length}</span>
           </Link>
         </div>
       </section>
