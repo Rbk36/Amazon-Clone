@@ -13,11 +13,15 @@ const ProductDetail = () => {
   const myUrl = "https://fakestoreapi.com";
   useEffect(() => {
     (async () => {
+      setIsLoading(true);
       try {
         const res = await axiosInstance.get(`${myUrl}/products/${productId}`);
         setProduct(res.data);
         setIsLoading(false);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 93e9c166c66638e420982fd05a881327d756334d
         console.log(res.data);
       } catch (error) {
         console.log("error", error);
@@ -25,6 +29,7 @@ const ProductDetail = () => {
       }
     })();
   }, [productId]);
+<<<<<<< HEAD
 
   return (
     <LayOut>
@@ -50,5 +55,20 @@ const ProductDetail = () => {
     </LayOut>
   );
 };
+=======
+>>>>>>> 93e9c166c66638e420982fd05a881327d756334d
 
+  return (
+    <LayOut>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className={classes.product_container}>
+          <ProductCard singleproduct={product} />
+         
+        </div>
+      )}
+    </LayOut>
+  );
+};
 export default ProductDetail;
