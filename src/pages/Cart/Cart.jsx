@@ -9,9 +9,9 @@ import { Type } from "../../utils/action.type";
 const Cart = () => {
   const [{ basket, user }, dispatch] = useContext(DataContext);
   const total = basket?.reduce((amount, item) => {
-    return amount + item.price * item.amount;
+    return amount + item.amount;
   }, 0);
-
+  console.log(total);
   const increment = (item) => {
     dispatch({ type: Type.ADD_TO_BASKET, payload: item });
   };
@@ -30,11 +30,11 @@ const Cart = () => {
           {basket?.length === 0 ? (
             <p>Your Shopping Basket is empty</p>
           ) : (
-            basket?.map((item) => {
+            basket?.map((item, index) => {
               return (
                 <section>
                   <ProductCard
-                    key={item.id}
+                    key={index}
                     singleproduct={item}
                     renderDesc={true}
                     renderAdd={false}
@@ -43,7 +43,9 @@ const Cart = () => {
                   <div>
                     <button onClick={() => increment(item)}>+</button>
                     <span className={classes.span}>{item.amount}</span>
-                    <button onClick={() => decrement(item.id)}>-</button>
+                    <button onClick={() => decrement(item.payload.id)}>
+                      -
+                    </button>
                   </div>
                 </section>
               );

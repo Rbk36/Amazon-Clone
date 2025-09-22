@@ -15,7 +15,7 @@ export const reducer = (state, action) => {
       if (!itemExists) {
         return {
           ...state,
-          basket: [...state.basket, { ...action.payload, amount: 1 }],
+          basket: [...state.basket, { ...action.payload.id, amount: 1 }],
         };
       }
 
@@ -30,10 +30,8 @@ export const reducer = (state, action) => {
         basket: updatedBasket,
       };
     }
-    case Type.REMOVE_FROM_BASKET: {
-      const index = state.basket.findIndex(
-        (item) => item.id === action.payload.id
-      );
+    case Type.REMOVE_FROM_BASKET:
+      const index = state.basket.findIndex((item) => item.id === action.id);
       let newBasket = [...state.basket];
 
       if (index >= 0) {
@@ -45,13 +43,11 @@ export const reducer = (state, action) => {
         } else {
           newBasket.splice(index, 1);
         }
-        return {
-          ...state,
-          basket: newBasket,
-        };
       }
-      break;
-    }
+      return {
+        ...state,
+        basket: newBasket,
+      };
 
     default:
       return state;
