@@ -28,7 +28,7 @@ const ProductDetail = () => {
 
   return (
     <LayOut>
-      {isLoading ? (
+      {isLoading.product ? (
         <Loader />
       ) : (
         <>
