@@ -50,7 +50,6 @@ export const reducer = (state, action) => {
           basket: newBasket,
         };
       }
-      break;
     }
 
     default:

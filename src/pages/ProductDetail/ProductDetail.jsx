@@ -18,10 +18,6 @@ const ProductDetail = () => {
         const res = await axiosInstance.get(`${myUrl}/products/${productId}`);
         setProduct(res.data);
         setIsLoading(false);
-<<<<<<< HEAD
-
-=======
->>>>>>> 93e9c166c66638e420982fd05a881327d756334d
         console.log(res.data);
       } catch (error) {
         console.log("error", error);
@@ -29,34 +25,6 @@ const ProductDetail = () => {
       }
     })();
   }, [productId]);
-<<<<<<< HEAD
-
-  return (
-    <LayOut>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <>
-          <h1 style={{ padding: "20px" }}>products</h1>
-          <p style={{ padding: "20px", fontSize: "26px" }}>
-            Product/{productId}
-          </p>
-          <hr />
-          <div className={classes.product_container}>
-            <ProductCard
-              singleproduct={product}
-              flex={true}
-              renderDesc={true}
-              renderAdd={true}
-            />
-          </div>{" "}
-        </>
-      )}
-    </LayOut>
-  );
-};
-=======
->>>>>>> 93e9c166c66638e420982fd05a881327d756334d
 
   return (
     <LayOut>
@@ -65,7 +33,6 @@ const ProductDetail = () => {
       ) : (
         <div className={classes.product_container}>
           <ProductCard singleproduct={product} />
-         
         </div>
       )}
     </LayOut>
