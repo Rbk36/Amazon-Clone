@@ -31,8 +31,10 @@ export const reducer = (state, action) => {
         basket: updatedBasket,
       };
     }
-    case Type.REMOVE_FROM_BASKET:
-      const index = state.basket.findIndex((item) => item.id === action.id);
+    case Type.REMOVE_FROM_BASKET: {
+      const index = state.basket.findIndex(
+        (item) => item.id === action.payload.id
+      );
       let newBasket = [...state.basket];
 
       if (index >= 0) {
@@ -44,13 +46,13 @@ export const reducer = (state, action) => {
         } else {
           newBasket.splice(index, 1);
         }
+
+        return {
+          ...state,
+          basket: newBasket,
+        };
       }
-
-      return {
-        ...state,
-        basket: newBasket,
-      };
-
+    }
     case Type.SET_USER:
       return {
         ...state,

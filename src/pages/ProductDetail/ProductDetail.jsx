@@ -28,27 +28,14 @@ const ProductDetail = () => {
 
   return (
     <LayOut>
-      {isLoading.product ? (
+      {isLoading ? (
         <Loader />
       ) : (
-        <>
-          <h1 style={{ padding: "20px" }}>products</h1>
-          <p style={{ padding: "20px", fontSize: "26px" }}>
-            Product/{productId}
-          </p>
-          <hr />
-          <div className={classes.product_container}>
-            <ProductCard
-              singleproduct={product}
-              flex={true}
-              renderDesc={true}
-              renderAdd={true}
-            />
-          </div>{" "}
-        </>
+        <div className={classes.product_container}>
+          <ProductCard singleproduct={product} />
+        </div>
       )}
     </LayOut>
   );
 };
-
 export default ProductDetail;
