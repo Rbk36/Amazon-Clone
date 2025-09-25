@@ -3,6 +3,9 @@ import classes from "./payments.module.css";
 import { useContext } from "react";
 import { DataContext } from "../../components/DataProvider/DataProvider";
 import ProductCard from "../../components/Product/ProductCard";
+import { useContext } from "react";
+import { DataContext } from "../../components/DataProvider/DataProvider";
+import ProductCard from "../../components/Product/ProductCard";
 const Payments = () => {
   const [{ user, basket }] = useContext(DataContext);
   console.log(user.email);
@@ -30,13 +33,7 @@ const Payments = () => {
           <h3>Review Items and Delivery</h3>
           <div>
             {basket?.map((item, index) => (
-              <ProductCard
-                key={index}
-                singleproduct={item}
-                renderDesc={true}
-                renderAdd={false}
-                flex={true}
-              />
+              <ProductCard key={index} singleproduct={item} flex={true} />
             ))}
           </div>
         </div>
