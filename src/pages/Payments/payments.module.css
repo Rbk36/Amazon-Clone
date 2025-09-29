@@ -1,11 +1,6 @@
 .payment_header {
-<<<<<<< HEAD
   text-align: center;
   padding: 20px;
-=======
-  padding: 20px;
-  text-align: center;
->>>>>>> 9dd882ac6a37ea391f567cf700ddc61cff2548ec
   font-size: 24px;
   background-color: rgb(234, 237, 237);
 }
@@ -20,7 +15,6 @@
 .flex h3 {
   min-width: 300px;
 }
-<<<<<<< HEAD
 .flex img {
   width: 80px !important;
 }
@@ -30,8 +24,30 @@
 .payment_card_container {
   max-width: 350px;
   width: 100%;
-  /* background-color: black; */
-  color: aliceblue;
 }
-=======
->>>>>>> 9dd882ac6a37ea391f567cf700ddc61cff2548ec
+.payment_details{
+  font-size: 25px;
+
+}
+.payment_price{
+  padding: 30px;
+
+}
+.payment_price div{
+ display: flex;
+ font-size: 18px;
+ gap: 10px; 
+}
+.payment_details button{
+  margin-top: 15px;
+  width: 100%;
+  border:none;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  padding: 7px 10px;
+  cursor: pointer;
+}
+.payment_details button:hover{
+    background-color: var(--primary-shade);
+
+}

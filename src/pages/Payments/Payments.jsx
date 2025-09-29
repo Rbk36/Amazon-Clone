@@ -1,21 +1,27 @@
-import { useContext } from "react";
+import { useContext , useState} from "react";
 import LayOut from "../../components/LayOut/LayOut";
 import classes from "./payments.module.css";
-import { useContext } from "react";
 import { DataContext } from "../../components/DataProvider/DataProvider";
 import ProductCard from "../../components/Product/ProductCard";
-import { useContext } from "react";
-import { DataContext } from "../../components/DataProvider/DataProvider";
-import ProductCard from "../../components/Product/ProductCard";
-import { useStripe, useElements,CardElement } from "@stripe/react-stripe-js";
+import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
+import CurrencyFormat from "../../components/CurrencyFormat/CurrencyFormat";
 const Payments = () => {
   const [{ basket, user }] = useContext(DataContext);
   console.log(user);
   const totalItem = basket?.reduce((amount, item) => {
     return item.amount + amount;
   }, 0);
-const stripe=useStripe();
-const elements=useElements();
+    const total = basket?.reduce((amount, item) => {
+      return amount + item.price * item.amount;
+    }, 0);
+
+  const [cardError,setCardError]=useState(null)
+  const stripe = useStripe();
+  const elements = useElements();
+  const handleChange=(e)=>{
+console.log(e);
+e?.error?.message ? setCardError(e?.error?.message) : setCardError("");
+  }
   return (
     <LayOut>
       {/* header */}
@@ -53,9 +59,22 @@ const elements=useElements();
         <div className={classes.flex}>
           <h3>Payment methods</h3>
           <div className={classes.payment_card_container}>
-            <div>
+            <div className={classes.payment_details}>
               <form action="">
-                <CardElement />
+                {cardError && (
+                  <small style={{ color: "red" }}>{cardError}</small>
+                )}
+                {/* card element */}
+                <CardElement onChange={handleChange} />
+                {/* price */}
+                <div className={classes.payment_price}>
+                  <div>
+                    <span style={{display:'flex'}}>
+                      <p>Total Order |</p> <CurrencyFormat amount={total} />
+                    </span>
+                  </div>
+                  <button>Pay Now </button>
+                </div>
               </form>
             </div>
           </div>
