@@ -7,13 +7,15 @@ import ProductCard from "../../components/Product/ProductCard";
 import { useContext } from "react";
 import { DataContext } from "../../components/DataProvider/DataProvider";
 import ProductCard from "../../components/Product/ProductCard";
+import { useStripe, useElements,CardElement } from "@stripe/react-stripe-js";
 const Payments = () => {
   const [{ basket, user }] = useContext(DataContext);
   console.log(user);
   const totalItem = basket?.reduce((amount, item) => {
     return item.amount + amount;
   }, 0);
-
+const stripe=useStripe();
+const elements=useElements();
   return (
     <LayOut>
       {/* header */}
@@ -53,7 +55,7 @@ const Payments = () => {
           <div className={classes.payment_card_container}>
             <div>
               <form action="">
-                <PaymentElement />
+                <CardElement />
               </form>
             </div>
           </div>
