@@ -1,6 +1,11 @@
 .payment_header {
+<<<<<<< HEAD
   text-align: center;
   padding: 20px;
+=======
+  padding: 20px;
+  text-align: center;
+>>>>>>> 9dd882ac6a37ea391f567cf700ddc61cff2548ec
   font-size: 24px;
   background-color: rgb(234, 237, 237);
 }
@@ -15,6 +20,7 @@
 .flex h3 {
   min-width: 300px;
 }
+<<<<<<< HEAD
 .flex img {
   width: 80px !important;
 }
@@ -27,3 +33,5 @@
   /* background-color: black; */
   color: aliceblue;
 }
+=======
+>>>>>>> 9dd882ac6a37ea391f567cf700ddc61cff2548ec

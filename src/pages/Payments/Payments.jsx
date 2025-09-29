@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import LayOut from "../../components/LayOut/LayOut";
 import classes from "./payments.module.css";
+import { useContext } from "react";
 import { DataContext } from "../../components/DataProvider/DataProvider";
 import ProductCard from "../../components/Product/ProductCard";
-import { useCheckout, PaymentElement } from "@stripe/react-stripe-js/checkout";
-
+import { useContext } from "react";
+import { DataContext } from "../../components/DataProvider/DataProvider";
+import ProductCard from "../../components/Product/ProductCard";
 const Payments = () => {
   const [{ basket, user }] = useContext(DataContext);
   console.log(user);

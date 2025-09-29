@@ -6,9 +6,11 @@ import { BiCart } from "react-icons/bi";
 import LowerContainer from "./LowerContainer";
 import { useContext } from "react";
 import { DataContext } from "../DataProvider/DataProvider";
-import { auth } from "../../utils/firebase";
 const Header = () => {
-  const [{ user, basket }, dispatch] = useContext(DataContext);
+  const [{ basket }, dispatch] = useContext(DataContext);
+  const totalItem = basket?.reduce((amount, item) => {
+    return amount + item.amount;
+  }, 0);
   console.log(basket);
 
   return (
@@ -54,20 +56,9 @@ const Header = () => {
               </select>
             </Link>
 
-            <Link to={!user && "/auth"} className={classes.signin}>
-              <div>
-                {user ? (
-                  <>
-                    <p>Hello {user?.email?.split("@")[0]}</p>
-                    <span onClick={() => auth.signOut()}>Sign out</span>
-                  </>
-                ) : (
-                  <>
-                    <p>Sign In</p>
-                    <span>Account & Lists</span>
-                  </>
-                )}
-              </div>
+            <Link to="/auth" className={classes.signin}>
+              <p>Sign In</p>
+              <span>Account & Lists</span>
             </Link>
 
             <Link to="/orders" className={classes.orders}>
@@ -78,7 +69,7 @@ const Header = () => {
           <Link to="/cart" className={classes.cart}>
             <BiCart size={35} color="white" />
 
-            <span>{basket.length}</span>
+            <span>{totalItem}</span>
           </Link>
         </div>
       </section>
