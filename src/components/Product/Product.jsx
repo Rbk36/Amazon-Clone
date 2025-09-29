@@ -28,8 +28,8 @@ const Product = () => {
         <Loader />
       ) : (
         <div className={classes.product_container}>
-          {products?.map((item) => (
-            <ProductCard singleproduct={item} renderAdd={true} key={item.id} />
+          {products?.map((item, index) => (
+            <ProductCard key={index} singleproduct={item} renderAdd={true} />
           ))}
         </div>
       )}

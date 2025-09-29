@@ -1,116 +1,4 @@
-/* .header_container {
-  background-color: #131921;
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  color: white;
-  gap: 10px;
-}
-.header_container {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-}
-.search {
-  display: flex;
-  align-items: center;
-  border-radius: 10px;
-  overflow: hidden;
-  width: 100%;
-  flex: 1;
-  margin: 0 10px;
-}
-.search input {
-  width: 100%;
-  border-radius: 7px;
-  padding: 5px;
-}
-.search select {
-  border: none;
-  border-radius: 7px;
-  padding: 5px;
-}
-.logo_container {
-  display: flex;
-  align-items: center;
-}
-.logo_container p,
-.logo_container span {
-  color: white;
-}
-svg {
-  color: white;
-}
-.flag {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.flag select {
-  background-color: black;
-  color: white;
-  margin-left: 3px;
-  border: none;
-}
-.language {
-  width: 100%;
-  display: flex;
-  padding: 10px;
-}
-.signin {
-  width: 100%;
-}
-.signin p,
-.orders p {
-  color: white;
-  font-size: 13px;
-}
-.cart {
-  position: relative;
-  margin-left: 15px;
-}
-.cart span {
-  position: absolute;
-  top: -2px;
-  left: 16px;
-  color: #f08804;
-  background-color: black;
-  font-size: 20px;
-  font-weight: bold;
-}
-.flag a:hover,
-.logo_container a:hover,
-.cart a:hover,
-.delivery:hover {
-  border: 2px solid #fff;
-  padding: 5px;
-}
-.lower_container ul,
-.lower_container p {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  list-style: none;
-}
-@media screen and (max-width: 578px) {
-  .header_container {
-    display: flex;
-    flex-direction: column !important;
-    height: auto;
-  }
-  .search {
-    margin: 10px 0;
-  }
-  .lower_container ul li:not(:first-child) {
-    display: none;
-  }
-  .language {
-    display: none;
-  }
-} */
-/* Header.module.css */
-
-/* === HEADER CONTAINER === */
+/* HEADER CONTAINER */
 .header_container {
   background-color: #131921;
   display: flex;
@@ -121,7 +9,7 @@ svg {
   flex-wrap: wrap;
 }
 
-/* === LOGO SECTION === */
+/* LOGO SECTION */
 .logo_container {
   display: flex;
   align-items: center;
@@ -132,7 +20,7 @@ svg {
   color: white;
 }
 
-/* === SEARCH BAR === */
+/* SEARCH BAR */
 .search {
   display: flex;
   align-items: center;
@@ -170,9 +58,9 @@ svg {
   z-index: 100;
 }
 
-/* === ICON COLOR === */
-svg {
-  color: white;
+/* ICON COLOR */
+.rating svg {
+  color: #faaf00;
 }
 .delivery p {
   font-size: 14px;
@@ -183,7 +71,7 @@ svg {
   font-size: 20px;
   margin-left: 20px;
 }
-/* === FLAG & LANGUAGE === */
+/* FLAG & LANGUAGE */
 .flag {
   display: flex;
   align-items: center;
@@ -205,20 +93,21 @@ svg {
   gap: 5px;
 }
 
-/* === SIGN-IN & ORDERS === */
+/* SIGN-IN & ORDERS */
 .signin,
 .orders {
-  width: 100%;
+  padding-left:20px;
+  color:white;
+  
 }
 
 .signin p,
 .orders p {
-  color: white;
-  font-size: 13px;
+ font-size: 13px;
   margin: 0;
 }
 
-/* === CART === */
+/* CART */
 .cart {
   position: relative;
   margin-left: 15px;
@@ -235,7 +124,7 @@ svg {
   font-weight: bold;
 }
 
-/* === HOVER EFFECTS === */
+/* HOVER EFFECTS */
 .flag a:hover,
 .logo_container a:hover,
 .cart a:hover,
@@ -244,7 +133,7 @@ svg {
   padding: 5px;
 }
 
-/* === LOWER CONTAINER === */
+/* LOWER CONTAINER */
 .lower_container{
      background-color: rgb(10, 34, 33);
      padding:13px
@@ -262,7 +151,7 @@ svg {
 color: #f3f3f3;
 }
 
-/* === RESPONSIVE DESIGN === */
+/* RESPONSIVE DESIGN */
 @media screen and (max-width: 578px) {
   .header_container {
     flex-direction: column !important;

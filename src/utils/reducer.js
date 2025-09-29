@@ -1,5 +1,5 @@
+
 import { Type } from "./action.type";
-import { useReducer } from "react";
 
 export const initialState = {
   basket: [],
@@ -9,31 +9,35 @@ export const initialState = {
 export const reducer = (state, action) => {
   switch (action.type) {
     case Type.ADD_TO_BASKET: {
+      const productToAdd = action.payload;
       const itemExists = state.basket.find(
-        (item) => item.id === action.payload.id
+        (item) => item.id === productToAdd.id
       );
 
       if (!itemExists) {
         return {
           ...state,
-          basket: [...state.basket, { ...action.payload.id, amount: 1 }],
+          basket: [...state.basket, { ...productToAdd, amount: 1 }],
         };
       }
 
-      const updatedBasket = state.basket.map((item) =>
-        item.id === action.payload.id
-          ? { ...item, amount: item.amount + 1 }
-          : item
-      );
+      const updatedBasket = state.basket.map((item) => {
+        if (item.id === productToAdd.id) {
+          return { ...item, amount: item.amount + 1 };
+        }
+        return item;
+      });
 
       return {
         ...state,
         basket: updatedBasket,
       };
     }
-    case Type.REMOVE_FROM_BASKET:
-      const index = state.basket.findIndex((item) => item.id === action.id);
-      let newBasket = [...state.basket];
+
+    case Type.REMOVE_FROM_BASKET: {
+      const idToRemove = action.payload;
+      const index = state.basket.findIndex((item) => item.id === idToRemove);
+      const newBasket = [...state.basket];
 
       if (index >= 0) {
         if (newBasket[index].amount > 1) {
@@ -42,6 +46,7 @@ export const reducer = (state, action) => {
             amount: newBasket[index].amount - 1,
           };
         } else {
+          // remove the item entirely
           newBasket.splice(index, 1);
         }
       }
@@ -50,12 +55,15 @@ export const reducer = (state, action) => {
         ...state,
         basket: newBasket,
       };
+    }
 
-    case Type.SET_USER:
+    case Type.SET_USER: {
       return {
         ...state,
         user: action.user,
       };
+    }
+
     default:
       return state;
   }

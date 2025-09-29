@@ -6,10 +6,12 @@ import classes from "./cart.module.css";
 import CurrencyFormat from "../../components/CurrencyFormat/CurrencyFormat";
 import { Link } from "react-router";
 import { Type } from "../../utils/action.type";
+import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowUp } from "react-icons/io";
 const Cart = () => {
   const [{ basket, user }, dispatch] = useContext(DataContext);
   const total = basket?.reduce((amount, item) => {
-    return amount + item.amount;
+    return amount + item.price * item.amount;
   }, 0);
   console.log(total);
   const increment = (item) => {
@@ -30,26 +32,21 @@ const Cart = () => {
           {basket?.length === 0 ? (
             <p>Your Shopping Basket is empty</p>
           ) : (
-            basket?.map((item, index) => {
-              return (
-                <section>
-                  <ProductCard
-                    key={index}
-                    singleproduct={item}
-                    renderDesc={true}
-                    renderAdd={false}
-                    flex={true}
-                  />
-                  <div>
-                    <button onClick={() => increment(item)}>+</button>
-                    <span className={classes.span}>{item.amount}</span>
-                    <button onClick={() => decrement(item.payload.id)}>
-                      -
-                    </button>
-                  </div>
-                </section>
-              );
-            })
+            basket.map((item, index) => (
+              <div key={index}>
+                <ProductCard
+                  singleproduct={item}
+                  renderDesc={true}
+                  renderAdd={false}
+                  flex={true}
+                />
+                <div>
+                  <button onClick={() => increment(item)}>+</button>
+                  <span className={classes.span}>{item.amount}</span>
+                  <button onClick={() => decrement(item.id)}>-</button>
+                </div>
+              </div>
+            ))
           )}
         </div>
         {basket?.length !== 0 && (

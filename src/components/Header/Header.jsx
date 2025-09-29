@@ -76,7 +76,7 @@ const Header = () => {
             </Link>
           </div>
           <Link to="/cart" className={classes.cart}>
-            <BiCart size={35} />
+            <BiCart size={35} color="white" />
 
             <span>{basket.length}</span>
           </Link>
